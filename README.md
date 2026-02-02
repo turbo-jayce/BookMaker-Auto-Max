@@ -1,59 +1,46 @@
 # BookMaker Auto-Maxer ⚡️
 
-A specialized Chrome extension designed for high-frequency sports bettors on BookMaker.eu. This tool automates the population of "Max Risk" amounts, saving critical seconds when lines are moving fast.
+A high-performance Chrome Extension built to automate "Max Risk" betting on **BookMaker.eu**. This tool is designed for bettors who need to lock in maximum limits the millisecond a line opens, bypassing the manual clicking process.
 
 ## 🚀 Key Features
 
-- **Automated Max Bet Selection:** Instantly identifies the "Max Risk" value in the bet slip and selects it.
-- **Angular-Ready Logic:** Specifically engineered to work with BookMaker's Angular framework using a `MutationObserver` for dynamic element detection.
-- **Smart 0.5s Delay:** Includes a built-in half-second pause after the bet box appears to ensure site event listeners are fully active before firing.
-- **Deep-Event Mimicry:** Dispatches a full sequence of Pointer, Mouse, and Input events to ensure the site registers the click as a trusted user action.
+- **Automated Max Selection:** Instantly identifies the "Max Risk" dollar amount and triggers a selection event.
+- **Angular-Compatible Engine:** Uses a `MutationObserver` to track the site's dynamic DOM, ensuring the extension works even as games and odds update without page refreshes.
+- **Precision 0.5s Delay:** Implements a strategic 500ms pause to ensure the site's underlying Angular event listeners are fully initialized before the click is fired.
+- **Deep Event Mimicry:** Dispatches a comprehensive sequence of events (`pointerdown`, `mousedown`, `click`, `input`, and `change`) to ensure the site registers the action as a trusted user input.
+- **Visual Feedback:** Provides a temporary yellow outline on targeted elements so you can verify the extension is firing in real-time.
 
 ## 📂 Project Structure
 
 ```text
 .
-├── manifest.json   # Extension metadata & permissions
-└── content.js      # The "Brain" that monitors and clicks the DOM
+├── manifest.json   # Extension configuration and permissions
+└── content.js      # Core logic for DOM monitoring and automated clicking
 ```
 
-Since you’re only pushing the Auto-Maxer, we’ll focus the documentation entirely on that tool's specific strengths: its speed, its ability to handle Angular's dynamic UI, and the 0.5s safety delay you requested.
-
-1. README.md
-   Create a file named README.md and paste this content:
-
-Markdown
-
-# BookMaker Auto-Maxer ⚡️
-
-A specialized Chrome extension designed for high-frequency sports bettors on BookMaker.eu. This tool automates the population of "Max Risk" amounts, saving critical seconds when lines are moving fast.
-
-## 🚀 Key Features
-
-- **Automated Max Bet Selection:** Instantly identifies the "Max Risk" value in the bet slip and selects it.
-- **Angular-Ready Logic:** Specifically engineered to work with BookMaker's Angular framework using a `MutationObserver` for dynamic element detection.
-- **Smart 0.5s Delay:** Includes a built-in half-second pause after the bet box appears to ensure site event listeners are fully active before firing.
-- **Deep-Event Mimicry:** Dispatches a full sequence of Pointer, Mouse, and Input events to ensure the site registers the click as a trusted user action.
-
-## 📂 Project Structure
-
-```text
-.
-├── manifest.json   # Extension metadata & permissions
-└── content.js      # The "Brain" that monitors and clicks the DOM
-
-
-## 🛠 Installation
+##🛠 Installation
 Download or clone this repository to your Mac.
 
-Open Chrome and navigate to chrome://extensions/.
+Open Google Chrome and navigate to chrome://extensions/.
 
-Enable Developer mode (top-right toggle).
+Enable Developer mode using the toggle in the top-right corner.
 
-Click Load unpacked and select this project folder.
+Click the Load unpacked button.
 
-Note: Refresh any open BookMaker tabs for the extension to take effect.
+Select the folder containing this project.
 
-##⚙️ How it Works (For Devs)
-The extension uses a MutationObserver to watch for changes in the bet-limits class. Once a "Max Risk" label is detected, it marks the element as processed and waits 500ms before dispatching a complex event sequence (pointerdown → mousedown → click → input) to force the bet slip to update its state.
-```
+Important: Refresh your BookMaker.eu tabs to inject the script.
+
+##⚙️ How it Works
+BookMaker.eu is a Single Page Application (SPA) built with Angular. This means buttons aren't always present when the page "loads."
+
+Monitor: The extension uses a MutationObserver to watch for any changes to the betting slip container.
+
+Identify: It searches for the specific <a> tag containing the string "Max Risk:".
+
+Delay: Once found, it waits 0.5 seconds to allow the site's internal state to catch up.
+
+Trigger: It bypasses standard JavaScript .click() blocks by firing a "Deep Click" sequence, forcing the bet slip to populate the maximum risk amount.
+
+##⚠️ Disclaimer
+This tool is for personal productivity purposes. Use responsibly and ensure compliance with the terms of service of the platform you are interacting with.
