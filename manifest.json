@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "BookMaker Auto-Max",
+  "version": "1.0",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://be.bookmaker.eu/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://be.bookmaker.eu/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
