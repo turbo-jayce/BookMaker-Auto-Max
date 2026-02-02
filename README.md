@@ -18,7 +18,7 @@ A high-performance Chrome Extension built to automate "Max Risk" betting on **Bo
 └── content.js      # Core logic for DOM monitoring and automated clicking
 ```
 
-##🛠 Installation
+## 🛠 Installation
 Download or clone this repository to your Mac.
 
 Open Google Chrome and navigate to chrome://extensions/.
@@ -31,7 +31,7 @@ Select the folder containing this project.
 
 Important: Refresh your BookMaker.eu tabs to inject the script.
 
-##⚙️ How it Works
+## ⚙️ How it Works
 BookMaker.eu is a Single Page Application (SPA) built with Angular. This means buttons aren't always present when the page "loads."
 
 Monitor: The extension uses a MutationObserver to watch for any changes to the betting slip container.
@@ -42,5 +42,5 @@ Delay: Once found, it waits 0.5 seconds to allow the site's internal state to ca
 
 Trigger: It bypasses standard JavaScript .click() blocks by firing a "Deep Click" sequence, forcing the bet slip to populate the maximum risk amount.
 
-##⚠️ Disclaimer
+## ⚠️ Disclaimer
 This tool is for personal productivity purposes. Use responsibly and ensure compliance with the terms of service of the platform you are interacting with.
